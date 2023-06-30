@@ -1,0 +1,8 @@
+text: 生产环境
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.108.157.232:3306/ymapp
+    username: ymapp
+    password: YxBxn5XK83RCn8zD

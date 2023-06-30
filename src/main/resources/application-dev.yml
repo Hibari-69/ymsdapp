@@ -1,0 +1,10 @@
+text: 开发环境
+#
+banner1: https://pica.zhimg.com/v2-307297c75663c246667d42f42c8938c9_r.jpg?source=172ae18b
+banner2: https://tse1-mm.cn.bing.net/th/id/OIP-C._698RnOYYcnxGHwYW-TAlwHaEf?pid=ImgDet&rs=1
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ymapp?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone = GMT
+    username: root
+    password: 6543210xx
