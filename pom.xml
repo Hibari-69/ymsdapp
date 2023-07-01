@@ -72,7 +72,13 @@
             <artifactId>swagger-bootstrap-ui</artifactId>
             <version>1.9.6</version>
         </dependency>
-        <!-- 引入swagger-bootstrap-ui包 -->
+
+
+        <!-- easycode -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+        </dependency>
 
 
 

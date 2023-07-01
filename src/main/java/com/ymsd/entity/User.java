@@ -1,25 +1,124 @@
 package com.ymsd.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+import java.io.Serializable;
 
-@Data
-@ApiModel
-public class User {
-    @ApiModelProperty("账号")
+/**
+ * (User)实体类
+ *
+ * @author makejava
+ * @since 2023-07-01 19:35:51
+ */
+public class User implements Serializable {
+    private static final long serialVersionUID = -64410190871835644L;
+    /**
+     * 自增id
+     */
     private Long id;
-    @ApiModelProperty("用户名")
+    /**
+     * 用户名
+     */
     private String uname;
-    @ApiModelProperty("用户密码")
+    /**
+     * 加密之后的密码
+     */
     private String upwd;
+    /**
+     * 手机号
+     */
+    private String utell;
+    /**
+     * 1:可用    0：禁用
+     */
+    private Integer ustate;
+    /**
+     * 会员积分
+     */
+    private Object uintegral;
+    /**
+     * 用户角色：普通会员、黄金会员、铂金会员等
+     */
+    private String urole;
+    /**
+     * token令牌
+     */
+    private String token;
+    /**
+     * 用户权限  用户、管理员
+     */
+    private String jurisdiction;
 
-    @Override
-    public String toString() {
-        return "Username{" +
-                "id=" + id +
-                ", upwd='" + uname + '\'' +
-                ", upwd='" + upwd + '\'' +
-                '}';
+
+    public Long getId() {
+        return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
+
+    public String getUpwd() {
+        return upwd;
+    }
+
+    public void setUpwd(String upwd) {
+        this.upwd = upwd;
+    }
+
+    public String getUtell() {
+        return utell;
+    }
+
+    public void setUtell(String utell) {
+        this.utell = utell;
+    }
+
+    public Integer getUstate() {
+        return ustate;
+    }
+
+    public void setUstate(Integer ustate) {
+        this.ustate = ustate;
+    }
+
+    public Object getUintegral() {
+        return uintegral;
+    }
+
+    public void setUintegral(Object uintegral) {
+        this.uintegral = uintegral;
+    }
+
+    public String getUrole() {
+        return urole;
+    }
+
+    public void setUrole(String urole) {
+        this.urole = urole;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getJurisdiction() {
+        return jurisdiction;
+    }
+
+    public void setJurisdiction(String jurisdiction) {
+        this.jurisdiction = jurisdiction;
+    }
+
 }
+

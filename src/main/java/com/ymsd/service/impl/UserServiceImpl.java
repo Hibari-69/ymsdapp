@@ -1,30 +1,88 @@
 package com.ymsd.service.impl;
 
-import com.ymsd.dao.ImageDao;
-import com.ymsd.dao.UserDao;
+import com.ymsd.dto.UserLoginDTO;
 import com.ymsd.entity.User;
+import com.ymsd.dao.UserDao;
 import com.ymsd.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.Resource;
-import java.util.List;
 
-@Service
+/**
+ * (User)表服务实现类
+ *
+ * @author makejava
+ * @since 2023-07-01 17:14:07
+ */
+@Service("userService")
 public class UserServiceImpl implements UserService {
-
     @Resource
     private UserDao userDao;
 
+    /**
+     * 通过ID查询单条数据
+     *
+     * @param id 主键
+     * @return 实例对象
+     */
     @Override
-    public List<User> userlist() {
-        List<User> userlist = userDao.userlist();
-        return userlist;
+    public User queryById(Long id) {
+        return this.userDao.queryById(id);
+    }
+
+    /**
+     * 分页查询
+     *
+     * @param user 筛选条件
+     * @param pageRequest      分页对象
+     * @return 查询结果
+     */
+    @Override
+    public Page<User> queryByPage(User user, PageRequest pageRequest) {
+        long total = this.userDao.count(user);
+        return new PageImpl<>(this.userDao.queryAllByLimit(user, pageRequest), pageRequest, total);
+    }
+
+    /**
+     * 新增数据
+     *
+     * @param user 实例对象
+     * @return 实例对象
+     */
+    @Override
+    public User insert(User user) {
+        this.userDao.insert(user);
+        return user;
+    }
+
+    /**
+     * 修改数据
+     *
+     * @param user 实例对象
+     * @return 实例对象
+     */
+    @Override
+    public User update(User user) {
+        this.userDao.update(user);
+        return this.queryById(user.getId());
+    }
+
+    /**
+     * 通过主键删除数据
+     *
+     * @param id 主键
+     * @return 是否成功
+     */
+    @Override
+    public boolean deleteById(Long id) {
+        return this.userDao.deleteById(id) > 0;
     }
 
     @Override
-    public User userById(Integer id) {
-        User user = userDao.userById(id);
-        return user;
+    public User login(UserLoginDTO loginDTO) {
+        return userDao.login(loginDTO.getUtell(),loginDTO.getUpwd());
     }
 }
