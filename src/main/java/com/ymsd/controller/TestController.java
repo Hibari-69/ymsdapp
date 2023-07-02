@@ -1,6 +1,8 @@
 package com.ymsd.controller;
 
 import com.sun.corba.se.spi.ior.ObjectAdapterId;
+import com.ymsd.common.Result;
+import com.ymsd.entity.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -61,5 +63,12 @@ public class TestController {
         list.add(map2);
         //ToDo
         return list;
+    }
+    @GetMapping("/testException")
+    public Result testException(){
+        List<User> objects=new ArrayList<>();
+
+        Long id=objects.get(0).getId();
+        return new Result<>().success();
     }
 }

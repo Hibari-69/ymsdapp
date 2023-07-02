@@ -98,6 +98,9 @@
         from user
         where utell = #{utell} and upwd = #{upwd}
     </select>
+    <select id="queryByUTell" resultType="com.ymsd.entity.User">
+        select  * from user where utell=#{utell} limit 1
+    </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">

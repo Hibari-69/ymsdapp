@@ -13,17 +13,17 @@ spring:
     active: dev
 
 
-# 日志配置
-#logging:
-#  level:
-#    root: INFO # 根日志级别
-#    com.example: DEBUG # 指定包的日志级别
-#  file:
-#    name: myapplication.log # 日志文件名
-#    path: /var/log/myapplication/ # 日志文件路径
-#  pattern:
-#    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" # 控制台日志输出格式
-#    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" # 文件日志输出格式
-#  max-history: 7 # 最大保留日志文件数量
+ #日志配置
+logging:
+  level:
+    root: INFO # 根日志级别
+    com.ymsd: DEBUG # 指定包的日志级别
+  file:
+    name: myapplication.log # 日志文件名
+    path: /var/log/myapplication/ # 日志文件路径
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" # 控制台日志输出格式
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" # 文件日志输出格式
+  max-history: 7 # 最大保留日志文件数量
 
 

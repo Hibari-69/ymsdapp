@@ -2,11 +2,14 @@ package com.ymsd.controller;
 
 import com.ymsd.common.Result;
 import com.ymsd.dto.UserLoginDTO;
+import com.ymsd.dto.UserRegisterDTO;
 import com.ymsd.entity.User;
+import com.ymsd.exception.CustomException;
 import com.ymsd.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -83,17 +86,33 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Result login(@RequestBody  UserLoginDTO loginDTO){
+    public Result login(@Validated @RequestBody  UserLoginDTO loginDTO){
 
         User user =  userService.login(loginDTO);
         //未找到
         if(user == null){
             //错误提示要模糊
-            return new Result<>().error(500,"用户手机号或密码输入错误");
+//            return new Result<>().error(500,"用户手机号或密码输入错误");
+  //          throw new CustomException("用户手机号或密码输入错误");
+            throw new CustomException(500,"用户手机号或密码输入错误");
         }else{
             return new Result<>().success(user);
         }
-
     }
+
+
+    @PostMapping("/register")
+    public Result register(@Validated @RequestBody UserRegisterDTO registerDTO){
+        //手机号不能重复
+        Boolean flag=userService.register(registerDTO);
+        if(flag){
+            return  new Result<>().success();
+        }else{
+            return new Result<>().error();
+        }
+    }
+
+
+
 }
 

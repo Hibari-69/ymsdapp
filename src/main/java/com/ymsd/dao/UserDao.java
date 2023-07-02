@@ -82,5 +82,7 @@ public interface UserDao {
     int deleteById(Long id);
 
     User login(@Param("utell") String utell, @Param("upwd") String upwd);
+
+    User queryByUTell(String utell);
 }
 

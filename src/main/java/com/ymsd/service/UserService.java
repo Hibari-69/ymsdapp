@@ -1,6 +1,7 @@
 package com.ymsd.service;
 
 import com.ymsd.dto.UserLoginDTO;
+import com.ymsd.dto.UserRegisterDTO;
 import com.ymsd.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -55,4 +56,7 @@ public interface UserService {
     boolean deleteById(Long id);
 
     User login(UserLoginDTO loginDTO);
+
+
+    Boolean register(UserRegisterDTO registerDTO);
 }
